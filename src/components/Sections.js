@@ -1,18 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 
-function Sections() {
+function Sections({
+  title,
+  description,
+  backgroundImg,
+  leftBtnTxt,
+  rightBtnTxt,
+}) {
   return (
-    <Wrap>
+    <Wrap bgImage={backgroundImg}>
       <ItemText>
-        <h1>Model S</h1>
-        <p>Order Online for Touchless Delivery</p>
+        <h1>{title}</h1>
+        <p>{description}</p>
       </ItemText>
 
-      <ButtonGroup>
-        <LeftButton>Custom Order</LeftButton>
-        <RightButton>Existing Inventory</RightButton>
-      </ButtonGroup>
+      <Buttons>
+        <ButtonGroup>
+          <LeftButton>{leftBtnTxt}</LeftButton>
+          {rightBtnTxt && <RightButton>{rightBtnTxt}</RightButton>}
+        </ButtonGroup>
+
+        <DownArrow src="/images/down-arrow.svg" />
+      </Buttons>
     </Wrap>
   );
 }
@@ -30,6 +40,7 @@ const Wrap = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  background-image: ${(props) => `url("/images/${props.bgImage}")`};
 `;
 
 const ItemText = styled.div`
@@ -42,6 +53,10 @@ const ButtonGroup = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const LeftButton = styled.div`
@@ -57,5 +72,17 @@ const LeftButton = styled.div`
   font-size: 12px;
   border-radius: 20px;
   cursor: pointer;
+  margin: 8px;
 `;
-const RightButton = styled(LeftButton)``;
+const RightButton = styled(LeftButton)`
+  background-color: white;
+  opacity: 0.85;
+  color: black;
+`;
+
+const DownArrow = styled.img`
+  height: 40px;
+  animation: animateDown infinite 1.5s;
+`;
+
+const Buttons = styled.div``;
