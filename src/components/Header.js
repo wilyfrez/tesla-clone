@@ -3,8 +3,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
+import { selectCars } from "../features/car/carSlice";
+import { useSelector } from "react-redux";
+
 function Header() {
   const [burgerStatus, setBurgerStatus] = useState(false);
+  const cars = useSelector(selectCars);
+  // console.log(cars);
   return (
     <Container>
       <Logo>
@@ -14,10 +19,12 @@ function Header() {
       </Logo>
 
       <Menu>
-        <a href="#">Model S </a>
-        <a href="#">Model X </a>
-        <a href="#">Model S </a>
-        <a href="#">Model S </a>
+        {cars &&
+          cars.map((car, index) => (
+            <a key={index} href="#">
+              {car}
+            </a>
+          ))}
       </Menu>
 
       <RightMenu>
@@ -30,35 +37,45 @@ function Header() {
         <CloseWrapper>
           <CustomClose onClick={() => setBurgerStatus(false)} />
         </CloseWrapper>
+
+        {cars &&
+          cars.map((car, index) => (
+            <li>
+              <a key={index} href="#">
+                {car}
+              </a>
+            </li>
+          ))}
+
         <li>
           <a href="">Existing Inventory</a>
         </li>
         <li>
-          <a href="">Existing Inventory</a>
+          <a href="">Used Inventory</a>
         </li>
         <li>
-          <a href="">Existing Inventory</a>
+          <a href="">Trade-ind</a>
         </li>
         <li>
-          <a href="">Existing Inventory</a>
+          <a href="">Cybertruck</a>
         </li>
         <li>
-          <a href="">Existing Inventory</a>
+          <a href="">Roadaster</a>
         </li>
         <li>
-          <a href="">Existing Inventory</a>
+          <a href=""> Semi</a>
         </li>
         <li>
-          <a href="">Existing Inventory</a>
+          <a href="">Chargin</a>
         </li>
         <li>
-          <a href="">Existing Inventory</a>
+          <a href="">Powerwall</a>
         </li>
         <li>
-          <a href="">Existing Inventory</a>
+          <a href="">Commercial Energy</a>
         </li>
         <li>
-          <a href="">Existing Inventory</a>
+          <a href="">Support</a>
         </li>
       </BurgerNav>
     </Container>
