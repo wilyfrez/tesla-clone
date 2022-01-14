@@ -38,14 +38,14 @@ function Header() {
           <CustomClose onClick={() => setBurgerStatus(false)} />
         </CloseWrapper>
 
-        {cars &&
+        {/* {cars &&
           cars.map((car, index) => (
             <li>
               <a key={index} href="#">
                 {car}
               </a>
             </li>
-          ))}
+          ))} */}
 
         <li>
           <a href="">Existing Inventory</a>
