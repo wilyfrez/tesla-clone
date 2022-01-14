@@ -1,6 +1,6 @@
 ## NETFLIX CLONE USING REACT, STYLED COMPONENT AND REDUX
 
-![Preview](netflix-preview.png?raw=true)
+![Preview](tesla_preview.png?raw=true)
 
 ## Available Scripts
 
